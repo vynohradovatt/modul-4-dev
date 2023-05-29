@@ -23,5 +23,7 @@ public class DatabasePopulateService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        database.close();
     }
 }

@@ -22,5 +22,7 @@ public class DatabaseInitService {
             } catch (IOException e) {
                 throw new RuntimeException(e);
         }
+
+        database.close();
     }
 }
