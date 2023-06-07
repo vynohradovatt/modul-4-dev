@@ -1,28 +1,41 @@
 package org.example;
 import org.example.dto.*;
 import org.example.sqlCommands.DatabaseQueryService;
+import org.example.sqlCommands.MyPreparedStatement;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public class TestsDB {
     public static void main(String[] args) {
 
-        DatabaseQueryService databaseQueryService = new DatabaseQueryService();
+        Database database = Database.getInstance();
 
-        List<MaxSalary> maxSalary = databaseQueryService.findMaxSalary();
-        System.out.println(maxSalary.toString());
+        MyPreparedStatement ps = new MyPreparedStatement(database);
+        int intoTable = ps.insertIntoTableWorker(
+                25,
+                "Maria",
+                LocalDate.parse("1960-08-08"),
+                "senior",
+                40000
+        );
 
-        List<LongestProject> longestProject = databaseQueryService.findLongestProject();
-        System.out.println(longestProject);
+        int client = ps.insertIntiTableClient(11, "Ivan");
 
-        List<MaxProjectClient> maxProjectClient = databaseQueryService.findMaxProjectClient();
-        System.out.println(maxProjectClient);
+        int project = ps.insertIntoTableProject(
+                11,
+                6,
+                LocalDate.parse("2022-01-01"),
+                LocalDate.parse("2022-02-02")
+        );
 
-        List<YoungestEldestWorker> youngestEldestWorker = databaseQueryService.findYoungestEldestWorker();
-        System.out.println(youngestEldestWorker);
+        int project_worker = ps.insertIntoTableProject_Worker(2, 1);
 
-        List<ProjectPrices> projectPrices = databaseQueryService.findProjectPrices();
-        System.out.println(projectPrices);
+        System.out.println("intoTable = " + intoTable);
+        System.out.println("client = " + client);
+        System.out.println("project = " + project);
+        System.out.println("project_worker = " + project_worker);
 
-
+        database.close();
     }
 }

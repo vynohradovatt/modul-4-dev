@@ -20,8 +20,8 @@ public class DatabaseQueryService {
             database.getConnection().createStatement();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
-        database.close();
     }
 
     public List<MaxSalary> findMaxSalary(){
@@ -46,7 +46,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        database.close();
+
 
         return listOfMaxSalary;
     }
@@ -75,7 +75,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        database.close();
+
         return longestProjectList;
     }
     public List<MaxProjectClient> findMaxProjectClient(){
@@ -103,7 +103,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        database.close();
+
         return maxProjectClients;
     }
 
@@ -133,7 +133,7 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        database.close();
+
         return youngestEldestWorkers;
     }
 
@@ -161,7 +161,8 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        database.close();
+
         return projectPricesList;
     }
+
 }
